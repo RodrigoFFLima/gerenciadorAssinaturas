@@ -325,7 +325,7 @@ class SubscriptionsScreenState extends State<SubscriptionsScreen> {
   Widget _totalFooter(int count, double total) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      decoration: BoxDecoration(color: _lavender, borderRadius: const BorderRadius.vertical(bottom: Radius.circular(10))),
+      decoration: const BoxDecoration(color: _lavender, borderRadius: BorderRadius.vertical(bottom: Radius.circular(10))),
       child: Row(
         children: [
           Expanded(child: Text('Exibindo $count assinaturas principais de ${_subscriptions.length} totais', style: const TextStyle(color: _muted, fontSize: 9))),

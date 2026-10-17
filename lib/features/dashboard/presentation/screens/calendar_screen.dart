@@ -75,7 +75,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final compact = constraints.maxWidth < 760;
-        final title = const Column(
+        const title = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Eyebrow(text: 'FLUXO FINANCEIRO & PREVISIBILIDADE  •  EXERCÍCIO 2025'),
@@ -99,7 +99,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
           ],
         );
         if (compact) return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [title, const SizedBox(height: 12), actions]);
-        return Row(children: [Expanded(child: title), const SizedBox(width: 16), Flexible(child: actions)]);
+        // ignore: prefer_const_constructors
+        return Flex(
+          direction: Axis.horizontal,
+          children: [const Expanded(child: title), const SizedBox(width: 16), Flexible(child: actions)],
+        );
       },
     );
   }
@@ -160,13 +164,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
-              const Expanded(child: Text('Grade do Mês', style: TextStyle(color: _ink, fontSize: 13, fontWeight: FontWeight.w800))),
-              _Legend(color: const Color(0xFF087E62), label: 'Pago'),
-              const SizedBox(width: 9),
-              _Legend(color: const Color(0xFF9B6514), label: 'Vence Hoje'),
-              const SizedBox(width: 9),
+              Expanded(child: Text('Grade do Mês', style: TextStyle(color: _ink, fontSize: 13, fontWeight: FontWeight.w800))),
+              _Legend(color: Color(0xFF087E62), label: 'Pago'),
+              SizedBox(width: 9),
+              _Legend(color: Color(0xFF9B6514), label: 'Vence Hoje'),
+              SizedBox(width: 9),
               _Legend(color: _violet, label: 'Previsto'),
             ],
           ),
@@ -182,6 +186,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     final daysInMonth = DateTime(_month.year, _month.month + 1, 0).day;
     final prevMonthDays = DateTime(_month.year, _month.month, 0).day;
     final leading = firstDay.weekday - 1;
+    final compact = MediaQuery.sizeOf(context).width < 600;
     final cells = <Widget>[];
     const weekdays = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM'];
     cells.addAll(weekdays.map((day) => Container(alignment: Alignment.center, color: _lavender, child: Text(day, style: const TextStyle(color: _muted, fontSize: 8, fontWeight: FontWeight.w800)))));
@@ -198,12 +203,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
       physics: const NeverScrollableScrollPhysics(),
       mainAxisSpacing: 3,
       crossAxisSpacing: 3,
-      childAspectRatio: 1.35,
+      childAspectRatio: compact ? 0.6 : 1.35,
       children: cells,
     );
   }
 
   Widget _dayCell(int day, bool inMonth, _CalendarEvent? event, bool today) {
+    final compact = MediaQuery.sizeOf(context).width < 600;
     final background = today ? const Color(0xFFFFF4E6) : event != null ? _lavender : Colors.white;
     return Container(
       padding: const EdgeInsets.all(5),
@@ -217,7 +223,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               if (event != null) Icon(Icons.circle, size: 5, color: event.color),
             ],
           ),
-          if (event != null) ...[
+          if (event != null && !compact) ...[
             const SizedBox(height: 4),
             Container(
               width: double.infinity,
@@ -232,8 +238,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
             ),
           ],
-          if (today) const Spacer(),
-          if (today) const Text('Hoje', style: TextStyle(color: Color(0xFF9B6514), fontSize: 7, fontWeight: FontWeight.w800)),
+          if (today && !compact) const Spacer(),
+          if (today && !compact) const Text('Hoje', style: TextStyle(color: Color(0xFF9B6514), fontSize: 7, fontWeight: FontWeight.w800)),
         ],
       ),
     );
@@ -280,10 +286,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
               const Divider(height: 1, color: Color(0xFFECEBF5)),
               const SizedBox(height: 12),
-              Row(
+              const Row(
                 children: [
-                  const Expanded(child: Text('Próximos Vencimentos', style: TextStyle(color: _ink, fontSize: 12, fontWeight: FontWeight.w800))),
-                  const Text('SUBTOTAL\nR\$ 110,70', textAlign: TextAlign.end, style: TextStyle(color: _violet, fontSize: 8, fontWeight: FontWeight.w800)),
+                  Expanded(child: Text('Próximos Vencimentos', style: TextStyle(color: _ink, fontSize: 12, fontWeight: FontWeight.w800))),
+                  Text('SUBTOTAL\nR\$ 110,70', textAlign: TextAlign.end, style: TextStyle(color: _violet, fontSize: 8, fontWeight: FontWeight.w800)),
                 ],
               ),
               const SizedBox(height: 9),

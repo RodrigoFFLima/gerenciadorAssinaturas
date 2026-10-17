@@ -32,7 +32,7 @@ class _HomeShellState extends State<HomeShell> {
   final _subscriptionsKey = GlobalKey<SubscriptionsScreenState>();
 
   late final List<Widget> _pages = [
-    DashboardScreen(),
+    const DashboardScreen(),
     SubscriptionsScreen(key: _subscriptionsKey),
     const CategoriesScreen(),
     const CalendarScreen(),
@@ -322,35 +322,35 @@ class _SettingsScreen extends StatelessWidget {
       backgroundColor: _page,
       body: ListView(
         padding: const EdgeInsets.all(22),
-        children: [
-          const Text('CONFIGURAÇÕES DA CONTA', style: TextStyle(color: _muted, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.5)),
-          const SizedBox(height: 6),
-          const Text('Preferências', style: TextStyle(color: _ink, fontSize: 24, fontWeight: FontWeight.w800)),
-          const SizedBox(height: 4),
-          const Text('Personalize sua experiência e os avisos financeiros.', style: TextStyle(color: _muted, fontSize: 11)),
-          const SizedBox(height: 18),
+        children: const [
+          Text('CONFIGURAÇÕES DA CONTA', style: TextStyle(color: _muted, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.5)),
+          SizedBox(height: 6),
+          Text('Preferências', style: TextStyle(color: _ink, fontSize: 24, fontWeight: FontWeight.w800)),
+          SizedBox(height: 4),
+          Text('Personalize sua experiência e os avisos financeiros.', style: TextStyle(color: _muted, fontSize: 11)),
+          SizedBox(height: 18),
           _SettingsGroup(
             title: 'Perfil e análise',
             icon: Icons.person_outline_rounded,
-            children: const [
+            children: [
               _SettingsRow(title: 'Finalidade principal', value: 'Pessoal / Família', icon: Icons.people_outline_rounded),
               _SettingsRow(title: 'Moeda padrão', value: 'Real brasileiro (BRL)', icon: Icons.attach_money_rounded),
             ],
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           _SettingsGroup(
             title: 'Notificações',
             icon: Icons.notifications_none_rounded,
-            children: const [
+            children: [
               _SettingsRow(title: 'Alertas de vencimento', value: '2 dias antes', icon: Icons.event_available_outlined),
               _SettingsRow(title: 'Resumo mensal', value: 'Ativado', icon: Icons.summarize_outlined),
             ],
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           _SettingsGroup(
             title: 'Segurança e plano',
             icon: Icons.shield_outlined,
-            children: const [
+            children: [
               _SettingsRow(title: 'Criptografia', value: 'AES-256', icon: Icons.lock_outline_rounded),
               _SettingsRow(title: 'Assinatura SubTrack', value: 'Plano Pro', icon: Icons.workspace_premium_outlined),
             ],

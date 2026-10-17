@@ -27,7 +27,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             final columns = constraints.maxWidth >= 1100 ? 3 : constraints.maxWidth >= 680 ? 2 : 1;
-            final spacing = 14.0;
+            const spacing = 14.0;
             final cardWidth = (constraints.maxWidth - 40 - spacing * (columns - 1)) / columns;
             return ListView(
               padding: const EdgeInsets.fromLTRB(20, 18, 20, 32),
@@ -64,7 +64,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final compact = constraints.maxWidth < 720;
-        final title = const Column(
+        const title = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Eyebrow(text: 'INTELIGÊNCIA FINANCEIRA  •  CICLO ATUAL'),
@@ -92,7 +92,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         if (compact) {
           return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [title, const SizedBox(height: 14), actions]);
         }
-        return Row(crossAxisAlignment: CrossAxisAlignment.end, children: [Expanded(child: title), const SizedBox(width: 18), Flexible(child: actions)]);
+        return Row(crossAxisAlignment: CrossAxisAlignment.end, children: [const Expanded(child: title), const SizedBox(width: 18), Flexible(child: actions)]);
       },
     );
   }

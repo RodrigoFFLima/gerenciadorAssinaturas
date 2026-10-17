@@ -19,7 +19,7 @@ final class CategoryBudget {
 }
 
 final List<Subscription> mockSubscriptions = [
-  Subscription(
+  const Subscription(
     name: 'Netflix Premium 4K',
     category: 'Filmes & Séries',
     provider: 'Nubank',
@@ -31,7 +31,7 @@ final List<Subscription> mockSubscriptions = [
     cardAlias: '•••• 8912',
     description: 'Cobrança programada em 2 dias',
   ),
-  Subscription(
+  const Subscription(
     name: 'Spotify Premium Duo',
     category: 'Música',
     provider: 'Visa',
@@ -43,7 +43,7 @@ final List<Subscription> mockSubscriptions = [
     cardAlias: '•••• 4021',
     description: 'Planejamento de áudio e podcasts',
   ),
-  Subscription(
+  const Subscription(
     name: 'ChatGPT Plus',
     category: 'Produtividade & IA',
     provider: 'Mastercard',
@@ -55,7 +55,7 @@ final List<Subscription> mockSubscriptions = [
     cardAlias: '•••• 1127',
     description: 'Assistente de IA e geração de conteúdo',
   ),
-  Subscription(
+  const Subscription(
     name: 'Xbox Game Pass Ultimate',
     category: 'Jogos & Entretenimento',
     provider: 'Itaú',
@@ -67,7 +67,7 @@ final List<Subscription> mockSubscriptions = [
     cardAlias: '•••• 9234',
     description: 'Biblioteca e jogos em nuvem',
   ),
-  Subscription(
+  const Subscription(
     name: 'Google One 2 TB',
     category: 'Nuvem & Armazenamento',
     provider: 'Visa',

@@ -65,18 +65,22 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _header() {
+    final width = MediaQuery.sizeOf(context).width;
+    final compact = width < 600;
+    final stacked = width < 900;
     return Container(
       height: 80,
-      padding: const EdgeInsets.symmetric(horizontal: 28),
+      padding: EdgeInsets.symmetric(horizontal: compact ? 16 : 28),
       decoration: const BoxDecoration(
         color: Color(0xFFFCFBFF),
         border: Border(bottom: BorderSide(color: Color(0xFFE9E8F6))),
       ),
       child: Row(
         children: [
-          const _BrandLockup(compact: false),
+          _BrandLockup(compact: stacked),
           const Spacer(),
-          Container(
+          if (!compact)
+            Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
             decoration: BoxDecoration(
               color: const Color(0xFFEFF0FF),
@@ -118,7 +122,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            if (!compact)
+              Row(
               children: [
                 const _BrandMark(size: 48),
                 const SizedBox(width: 12),
@@ -427,10 +432,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 22),
-              Text.rich(
+              const Text.rich(
                 TextSpan(
-                  style: const TextStyle(color: _muted, fontSize: 13),
-                  children: const [
+                  style: TextStyle(color: _muted, fontSize: 13),
+                  children: [
                     TextSpan(text: 'Não tem uma assinatura ainda? '),
                     TextSpan(
                       text: 'Experimente 14 dias grátis',
@@ -605,7 +610,7 @@ class _BrandLockup extends StatelessWidget {
           children: [
             const Text('SubTrack', style: TextStyle(color: _ink, fontSize: 20, fontWeight: FontWeight.w800)),
             Text(
-              compact ? 'Finanças recorrentes' : 'GESTÃO RECORRENTE',
+              compact ? 'Gestão Inteligente de Assinaturas' : 'GESTÃO RECORRENTE',
               style: const TextStyle(color: _muted, fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 0.8),
             ),
           ],

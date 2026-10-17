@@ -82,7 +82,7 @@ class DashboardScreen extends StatelessWidget {
 
   Widget _metrics(bool wide) {
     final metrics = <Widget>[
-      _MetricCard(
+      const _MetricCard(
         title: 'COMPROMETIMENTO MENSAL',
         value: 'R\$ 384,90',
         detail: '↗ 5,2% vs. mês anterior',
