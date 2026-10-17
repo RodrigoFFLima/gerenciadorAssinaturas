@@ -81,22 +81,22 @@ class _LoginScreenState extends State<LoginScreen> {
           const Spacer(),
           if (!compact)
             Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-            decoration: BoxDecoration(
-              color: const Color(0xFFEFF0FF),
-              borderRadius: BorderRadius.circular(30),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+              decoration: BoxDecoration(
+                color: const Color(0xFFEFF0FF),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.circle, color: Color(0xFF00845A), size: 10),
+                  SizedBox(width: 8),
+                  Text(
+                    'Ambiente Seguro',
+                    style: TextStyle(color: _ink, fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
             ),
-            child: const Row(
-              children: [
-                Icon(Icons.circle, color: Color(0xFF00845A), size: 10),
-                SizedBox(width: 8),
-                Text(
-                  'Ambiente Seguro',
-                  style: TextStyle(color: _ink, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -124,36 +124,39 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             if (!compact)
               Row(
-              children: [
-                const _BrandMark(size: 48),
-                const SizedBox(width: 12),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'SubTrack',
-                      style: TextStyle(
-                        color: _ink,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
+                children: [
+                  const _BrandMark(size: 48),
+                  const SizedBox(width: 12),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'SubTrack',
+                        style: TextStyle(
+                          color: _ink,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Gestão Inteligente de Assinaturas',
-                      style: TextStyle(color: _muted, fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                if (!compact)
-                  _pill(
-                    icon: Icons.verified_user_outlined,
-                    label: 'Balanço 100% Auditável',
-                    foreground: const Color(0xFF087E62),
-                    background: Colors.white.withValues(alpha: 0.8),
+                      Text(
+                        'Gestão Inteligente de Assinaturas',
+                        style: TextStyle(
+                          color: _muted,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
-              ],
-            ),
+                  const Spacer(),
+                  if (!compact)
+                    _pill(
+                      icon: Icons.verified_user_outlined,
+                      label: 'Balanço 100% Auditável',
+                      foreground: const Color(0xFF087E62),
+                      background: Colors.white.withValues(alpha: 0.8),
+                    ),
+                ],
+              ),
             SizedBox(height: compact ? 34 : 82),
             _pill(
               icon: Icons.circle,
@@ -254,7 +257,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             child: const Row(
               children: [
-                Icon(Icons.notifications_active_outlined, color: Color(0xFF8D4A15)),
+                Icon(
+                  Icons.notifications_active_outlined,
+                  color: Color(0xFF8D4A15),
+                ),
                 SizedBox(width: 12),
                 Expanded(
                   child: Column(
@@ -262,7 +268,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         'Netflix Premium 4K',
-                        style: TextStyle(color: _ink, fontWeight: FontWeight.w700),
+                        style: TextStyle(
+                          color: _ink,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       Text(
                         'Cobrança programada em 2 dias',
@@ -273,7 +282,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Text(
                   'R\$ 55,90',
-                  style: TextStyle(color: _ink, fontSize: 18, fontWeight: FontWeight.w800),
+                  style: TextStyle(
+                    color: _ink,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ],
             ),
@@ -310,10 +323,17 @@ class _LoginScreenState extends State<LoginScreen> {
             alignment: WrapAlignment.spaceBetween,
             children: [
               _DotLabel(color: _violet, label: '14 ativas'),
-              _DotLabel(color: Color(0xFF007C59), label: '3 cancelamentos pendentes'),
+              _DotLabel(
+                color: Color(0xFF007C59),
+                label: '3 cancelamentos pendentes',
+              ),
               Text(
                 'Total: R\$ 1.368,00/mês',
-                style: TextStyle(color: _ink, fontWeight: FontWeight.w700, fontSize: 12),
+                style: TextStyle(
+                  color: _ink,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                ),
               ),
             ],
           ),
@@ -339,10 +359,17 @@ class _LoginScreenState extends State<LoginScreen> {
               if (compact) ...[
                 Text(
                   _registering ? 'Crie sua conta' : 'Acesse sua conta',
-                  style: const TextStyle(color: _ink, fontSize: 32, fontWeight: FontWeight.w800),
+                  style: const TextStyle(
+                    color: _ink,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
                 const SizedBox(height: 6),
-                const Text('Retome o controle financeiro do seu mês', style: TextStyle(color: _muted, fontSize: 16)),
+                const Text(
+                  'Retome o controle financeiro do seu mês',
+                  style: TextStyle(color: _muted, fontSize: 16),
+                ),
                 const SizedBox(height: 16),
                 _modeSwitch(),
               ] else
@@ -353,11 +380,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            _registering ? 'Crie sua conta' : 'Acesse sua conta',
-                            style: const TextStyle(color: _ink, fontSize: 36, fontWeight: FontWeight.w800),
+                            _registering
+                                ? 'Crie sua conta'
+                                : 'Acesse sua conta',
+                            style: const TextStyle(
+                              color: _ink,
+                              fontSize: 36,
+                              fontWeight: FontWeight.w800,
+                            ),
                           ),
                           const SizedBox(height: 6),
-                          const Text('Retome o controle financeiro do seu mês', style: TextStyle(color: _muted, fontSize: 16)),
+                          const Text(
+                            'Retome o controle financeiro do seu mês',
+                            style: TextStyle(color: _muted, fontSize: 16),
+                          ),
                         ],
                       ),
                     ),
@@ -367,7 +403,9 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 30),
               Row(
                 children: [
-                  Expanded(child: _socialButton('Google', Icons.g_mobiledata_rounded)),
+                  Expanded(
+                    child: _socialButton('Google', Icons.g_mobiledata_rounded),
+                  ),
                   const SizedBox(width: 14),
                   Expanded(child: _socialButton('Apple', Icons.apple)),
                 ],
@@ -380,39 +418,73 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
                       'OU COM SEU E-MAIL',
-                      style: TextStyle(color: _muted, fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.5),
+                      style: TextStyle(
+                        color: _muted,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.5,
+                      ),
                     ),
                   ),
                   Expanded(child: Divider(color: Color(0xFFE4E4F0))),
                 ],
               ),
               const SizedBox(height: 24),
-              _inputField('E-mail de Acesso', hint: 'seu.nome@exemplo.com', icon: Icons.mail_outline_rounded),
+              _inputField(
+                'E-mail de Acesso',
+                hint: 'seu.nome@exemplo.com',
+                icon: Icons.mail_outline_rounded,
+              ),
               const SizedBox(height: 16),
               Row(
                 children: [
-                  const Expanded(child: Text('Senha de Acesso', style: TextStyle(color: _ink, fontWeight: FontWeight.w700))),
-                  TextButton(onPressed: () {}, child: const Text('Esqueceu a senha?')),
+                  const Expanded(
+                    child: Text(
+                      'Senha de Acesso',
+                      style: TextStyle(
+                        color: _ink,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('Esqueceu a senha?'),
+                  ),
                 ],
               ),
               TextField(
                 obscureText: !_showPassword,
-                decoration: _inputDecoration('••••••••••••', Icons.lock_outline_rounded).copyWith(
-                  suffixIcon: IconButton(
-                    onPressed: () => setState(() => _showPassword = !_showPassword),
-                    icon: Icon(_showPassword ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: _muted),
-                  ),
-                ),
+                decoration:
+                    _inputDecoration(
+                      '••••••••••••',
+                      Icons.lock_outline_rounded,
+                    ).copyWith(
+                      suffixIcon: IconButton(
+                        onPressed: () =>
+                            setState(() => _showPassword = !_showPassword),
+                        icon: Icon(
+                          _showPassword
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined,
+                          color: _muted,
+                        ),
+                      ),
+                    ),
               ),
               const SizedBox(height: 18),
               _profileSettings(),
               const SizedBox(height: 14),
               CheckboxListTile(
                 value: _rememberMe,
-                onChanged: (value) => setState(() => _rememberMe = value ?? false),
+                onChanged: (value) =>
+                    setState(() => _rememberMe = value ?? false),
                 contentPadding: EdgeInsets.zero,
                 controlAffinity: ListTileControlAffinity.leading,
-                title: const Text('Permanecer conectado por 30 dias', style: TextStyle(color: _muted, fontSize: 14)),
+                title: const Text(
+                  'Permanecer conectado por 30 dias',
+                  style: TextStyle(color: _muted, fontSize: 14),
+                ),
                 activeColor: _violet,
               ),
               const SizedBox(height: 8),
@@ -421,12 +493,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: FilledButton.icon(
                   onPressed: _enterApp,
                   icon: const Icon(Icons.arrow_forward_rounded),
-                  label: Text(_registering ? 'Criar conta SubTrack' : 'Acessar Plataforma SubTrack'),
+                  label: Text(
+                    _registering
+                        ? 'Criar conta SubTrack'
+                        : 'Acessar Plataforma SubTrack',
+                  ),
                   style: FilledButton.styleFrom(
                     backgroundColor: _violet,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     elevation: 3,
                   ),
                 ),
@@ -439,7 +520,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextSpan(text: 'Não tem uma assinatura ainda? '),
                     TextSpan(
                       text: 'Experimente 14 dias grátis',
-                      style: TextStyle(color: _violet, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                        color: _violet,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ],
                 ),
@@ -449,7 +533,11 @@ class _LoginScreenState extends State<LoginScreen> {
               const Text(
                 'Ao prosseguir, você concorda com nossos Termos de Serviço e Política de Privacidade LGPD.',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xFF777A8D), fontSize: 12, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: Color(0xFF777A8D),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),
@@ -461,12 +549,23 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _modeSwitch() {
     return Container(
       padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(color: const Color(0xFFE9E9FF), borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE9E9FF),
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _modeButton('Entrar', !_registering, () => setState(() => _registering = false)),
-          _modeButton('Criar Conta', _registering, () => setState(() => _registering = true)),
+          _modeButton(
+            'Entrar',
+            !_registering,
+            () => setState(() => _registering = false),
+          ),
+          _modeButton(
+            'Criar Conta',
+            _registering,
+            () => setState(() => _registering = true),
+          ),
         ],
       ),
     );
@@ -500,13 +599,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _inputField(String label, {required String hint, required IconData icon}) {
+  Widget _inputField(
+    String label, {
+    required String hint,
+    required IconData icon,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 8),
-          child: Text(label, style: const TextStyle(color: _ink, fontWeight: FontWeight.w700)),
+          child: Text(
+            label,
+            style: const TextStyle(color: _ink, fontWeight: FontWeight.w700),
+          ),
         ),
         TextField(decoration: _inputDecoration(hint, icon)),
       ],
@@ -520,9 +626,18 @@ class _LoginScreenState extends State<LoginScreen> {
       prefixIcon: Icon(icon, color: _muted),
       filled: true,
       fillColor: _lavender,
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: _violet, width: 1.5)),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: _violet, width: 1.5),
+      ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
     );
   }
@@ -530,7 +645,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _profileSettings() {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: _lavender, borderRadius: BorderRadius.circular(14)),
+      decoration: BoxDecoration(
+        color: _lavender,
+        borderRadius: BorderRadius.circular(14),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -541,35 +659,76 @@ class _LoginScreenState extends State<LoginScreen> {
               Expanded(
                 child: Text(
                   'CONFIGURAÇÃO RÁPIDA DO PERFIL',
-                  style: TextStyle(color: _muted, fontSize: 12, fontWeight: FontWeight.w800),
+                  style: TextStyle(
+                    color: _muted,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
-              Text('Pré-definido', style: TextStyle(color: Color(0xFF00845A), fontSize: 12, fontWeight: FontWeight.w700)),
+              Text(
+                'Pré-definido',
+                style: TextStyle(
+                  color: Color(0xFF00845A),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 16),
-          const Text('Finalidade Principal:', style: TextStyle(color: _ink, fontWeight: FontWeight.w600)),
+          const Text(
+            'Finalidade Principal:',
+            style: TextStyle(color: _ink, fontWeight: FontWeight.w600),
+          ),
           const SizedBox(height: 8),
           Row(
             children: [
-              Expanded(child: _profileButton('Pessoal / Família', Icons.person_outline_rounded, true)),
+              Expanded(
+                child: _profileButton(
+                  'Pessoal / Família',
+                  Icons.person_outline_rounded,
+                  true,
+                ),
+              ),
               const SizedBox(width: 8),
-              Expanded(child: _profileButton('PJ / Freelancer', Icons.business_outlined, false)),
+              Expanded(
+                child: _profileButton(
+                  'PJ / Freelancer',
+                  Icons.business_outlined,
+                  false,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 12),
           Row(
             children: [
-              const Expanded(child: Text('Moeda Padrão de Análise:', style: TextStyle(color: _muted, fontWeight: FontWeight.w600))),
+              const Expanded(
+                child: Text(
+                  'Moeda Padrão de Análise:',
+                  style: TextStyle(color: _muted, fontWeight: FontWeight.w600),
+                ),
+              ),
               DropdownButton<String>(
                 value: _currency,
                 underline: const SizedBox.shrink(),
                 items: const [
-                  DropdownMenuItem(value: 'R\$ Real (BRL)', child: Text('R\$ Real (BRL)')),
-                  DropdownMenuItem(value: 'US\$ Dólar (USD)', child: Text('US\$ Dólar (USD)')),
-                  DropdownMenuItem(value: '€ Euro (EUR)', child: Text('€ Euro (EUR)')),
+                  DropdownMenuItem(
+                    value: 'R\$ Real (BRL)',
+                    child: Text('R\$ Real (BRL)'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'US\$ Dólar (USD)',
+                    child: Text('US\$ Dólar (USD)'),
+                  ),
+                  DropdownMenuItem(
+                    value: '€ Euro (EUR)',
+                    child: Text('€ Euro (EUR)'),
+                  ),
                 ],
-                onChanged: (value) => setState(() => _currency = value ?? _currency),
+                onChanged: (value) =>
+                    setState(() => _currency = value ?? _currency),
               ),
             ],
           ),
@@ -608,10 +767,24 @@ class _BrandLockup extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('SubTrack', style: TextStyle(color: _ink, fontSize: 20, fontWeight: FontWeight.w800)),
+            const Text(
+              'SubTrack',
+              style: TextStyle(
+                color: _ink,
+                fontSize: 20,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
             Text(
-              compact ? 'Gestão Inteligente de Assinaturas' : 'GESTÃO RECORRENTE',
-              style: const TextStyle(color: _muted, fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 0.8),
+              compact
+                  ? 'Gestão Inteligente de Assinaturas'
+                  : 'GESTÃO RECORRENTE',
+              style: const TextStyle(
+                color: _muted,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.8,
+              ),
             ),
           ],
         ),
@@ -630,8 +803,14 @@ class _BrandMark extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(color: _violet, borderRadius: BorderRadius.circular(14)),
-      child: const Icon(Icons.account_balance_wallet_outlined, color: Colors.white),
+      decoration: BoxDecoration(
+        color: _violet,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: const Icon(
+        Icons.account_balance_wallet_outlined,
+        color: Colors.white,
+      ),
     );
   }
 }
@@ -644,7 +823,10 @@ Widget _pill({
 }) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(30)),
+    decoration: BoxDecoration(
+      color: background,
+      borderRadius: BorderRadius.circular(30),
+    ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -652,7 +834,14 @@ Widget _pill({
           Icon(icon, size: 16, color: foreground),
           const SizedBox(width: 6),
         ],
-        Text(label, style: TextStyle(color: foreground, fontSize: 12, fontWeight: FontWeight.w700)),
+        Text(
+          label,
+          style: TextStyle(
+            color: foreground,
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ],
     ),
   );
@@ -671,7 +860,14 @@ class _TrustNote extends StatelessWidget {
       children: [
         Icon(icon, color: const Color(0xFF00845A), size: 19),
         const SizedBox(width: 9),
-        Text(text, style: const TextStyle(color: _muted, fontSize: 13, fontWeight: FontWeight.w600)),
+        Text(
+          text,
+          style: const TextStyle(
+            color: _muted,
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }
@@ -690,7 +886,14 @@ class _DotLabel extends StatelessWidget {
       children: [
         Icon(Icons.circle, color: color, size: 10),
         const SizedBox(width: 6),
-        Text(label, style: const TextStyle(color: _muted, fontSize: 12, fontWeight: FontWeight.w600)),
+        Text(
+          label,
+          style: const TextStyle(
+            color: _muted,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }

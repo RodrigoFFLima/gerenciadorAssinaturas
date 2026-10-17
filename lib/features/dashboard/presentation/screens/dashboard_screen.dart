@@ -13,7 +13,10 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final total = mockSubscriptions.fold<double>(0, (sum, item) => sum + item.price);
+    final total = mockSubscriptions.fold<double>(
+      0,
+      (sum, item) => sum + item.price,
+    );
 
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFF),
@@ -62,7 +65,14 @@ class DashboardScreen extends StatelessWidget {
             children: [
               _Eyebrow(text: 'PAINEL DE CONTROLE  •  TEMPO REAL'),
               SizedBox(height: 6),
-              Text('Visão Geral Financeira', style: TextStyle(color: _ink, fontSize: 25, fontWeight: FontWeight.w800)),
+              Text(
+                'Visão Geral Financeira',
+                style: TextStyle(
+                  color: _ink,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
               SizedBox(height: 4),
               Text(
                 'Acompanhe seus gastos recorrentes, cadência e datas de vencimento em tempo real.',
@@ -130,7 +140,9 @@ class DashboardScreen extends StatelessWidget {
         return Wrap(
           spacing: 12,
           runSpacing: 12,
-          children: metrics.map((card) => SizedBox(width: cardWidth, child: card)).toList(),
+          children: metrics
+              .map((card) => SizedBox(width: cardWidth, child: card))
+              .toList(),
         );
       },
     );
@@ -141,9 +153,19 @@ class DashboardScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Distribuição de Gastos por Categoria', style: TextStyle(color: _ink, fontSize: 14, fontWeight: FontWeight.w800)),
+          const Text(
+            'Distribuição de Gastos por Categoria',
+            style: TextStyle(
+              color: _ink,
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
           const SizedBox(height: 3),
-          const Text('Visão percentual do teto mensal orçado', style: TextStyle(color: _muted, fontSize: 11)),
+          const Text(
+            'Visão percentual do teto mensal orçado',
+            style: TextStyle(color: _muted, fontSize: 11),
+          ),
           const SizedBox(height: 18),
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
@@ -162,46 +184,95 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: 7),
           Row(
             children: [
-              const Expanded(child: Text('R\$ 0,00', style: TextStyle(color: _muted, fontSize: 10))),
-              Text('Total Recorrente: R\$ ${total.toStringAsFixed(2)}', style: const TextStyle(color: _ink, fontSize: 10, fontWeight: FontWeight.w700)),
+              const Expanded(
+                child: Text(
+                  'R\$ 0,00',
+                  style: TextStyle(color: _muted, fontSize: 10),
+                ),
+              ),
+              Text(
+                'Total Recorrente: R\$ ${total.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  color: _ink,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 12),
-          ...categoryBudgets.map((category) => Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
-                  decoration: BoxDecoration(color: _lavender, borderRadius: BorderRadius.circular(9)),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(color: category.tint.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(8)),
-                        child: Icon(_categoryIcon(category.name), color: category.tint, size: 16),
+          ...categoryBudgets.map(
+            (category) => Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 9,
+                ),
+                decoration: BoxDecoration(
+                  color: _lavender,
+                  borderRadius: BorderRadius.circular(9),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: category.tint.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      const SizedBox(width: 9),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(category.name, style: const TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w700)),
-                            Text('${category.services.length} serviços  •  ${category.services.join(', ')}', maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: _muted, fontSize: 9)),
-                          ],
-                        ),
+                      child: Icon(
+                        _categoryIcon(category.name),
+                        color: category.tint,
+                        size: 16,
                       ),
-                      const SizedBox(width: 8),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                    ),
+                    const SizedBox(width: 9),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('R\$ ${category.amount.toStringAsFixed(2)}', style: const TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w800)),
-                          Text('${category.percent.toStringAsFixed(1)}%', style: const TextStyle(color: _muted, fontSize: 9)),
+                          Text(
+                            category.name,
+                            style: const TextStyle(
+                              color: _ink,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            '${category.services.length} serviços  •  ${category.services.join(', ')}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(color: _muted, fontSize: 9),
+                          ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(width: 8),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'R\$ ${category.amount.toStringAsFixed(2)}',
+                          style: const TextStyle(
+                            color: _ink,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        Text(
+                          '${category.percent.toStringAsFixed(1)}%',
+                          style: const TextStyle(color: _muted, fontSize: 9),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              )),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -215,12 +286,24 @@ class DashboardScreen extends StatelessWidget {
         children: [
           const Row(
             children: [
-              Expanded(child: Text('Próximos Pagamentos', style: TextStyle(color: _ink, fontSize: 14, fontWeight: FontWeight.w800))),
+              Expanded(
+                child: Text(
+                  'Próximos Pagamentos',
+                  style: TextStyle(
+                    color: _ink,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
               _Tag(label: 'Maio', color: _violet, background: _lavender),
             ],
           ),
           const SizedBox(height: 3),
-          const Text('Prioridade para os próximos 10 dias', style: TextStyle(color: _muted, fontSize: 11)),
+          const Text(
+            'Prioridade para os próximos 10 dias',
+            style: TextStyle(color: _muted, fontSize: 11),
+          ),
           const SizedBox(height: 14),
           ...upcoming.map(_paymentRow),
           const SizedBox(height: 3),
@@ -228,7 +311,13 @@ class DashboardScreen extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.arrow_forward_rounded, size: 15),
             label: const Text('Ver Agenda Completa de Vencimentos'),
-            style: TextButton.styleFrom(foregroundColor: _violet, textStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
+            style: TextButton.styleFrom(
+              foregroundColor: _violet,
+              textStyle: const TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
         ],
       ),
@@ -239,7 +328,10 @@ class DashboardScreen extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 9),
       padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(color: _lavender, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(
+        color: _lavender,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -249,27 +341,67 @@ class DashboardScreen extends StatelessWidget {
                 width: 28,
                 height: 28,
                 alignment: Alignment.center,
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
-                child: Text(item.name.characters.first, style: TextStyle(color: item.accentColor, fontWeight: FontWeight.w800)),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  item.name.characters.first,
+                  style: TextStyle(
+                    color: item.accentColor,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
               ),
               const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(item.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w700)),
-                    Text('${item.provider} • ${item.cardAlias}', style: const TextStyle(color: _muted, fontSize: 9)),
+                    Text(
+                      item.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: _ink,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Text(
+                      '${item.provider} • ${item.cardAlias}',
+                      style: const TextStyle(color: _muted, fontSize: 9),
+                    ),
                   ],
                 ),
               ),
-              Text('R\$ ${item.price.toStringAsFixed(2)}', style: const TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w800)),
+              Text(
+                'R\$ ${item.price.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  color: _ink,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 6),
           Row(
             children: [
-              Expanded(child: Text('Vence em ${item.nextBillingDate}', style: const TextStyle(color: _muted, fontSize: 9))),
-              Text(item.status, style: TextStyle(color: item.accentColor, fontSize: 9, fontWeight: FontWeight.w700)),
+              Expanded(
+                child: Text(
+                  'Vence em ${item.nextBillingDate}',
+                  style: const TextStyle(color: _muted, fontSize: 9),
+                ),
+              ),
+              Text(
+                item.status,
+                style: TextStyle(
+                  color: item.accentColor,
+                  fontSize: 9,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ],
           ),
         ],
@@ -287,8 +419,21 @@ class DashboardScreen extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
             child: Row(
               children: [
-                const Expanded(child: Text('Assinaturas Recentes & Gerenciamento Rápido', style: TextStyle(color: _ink, fontSize: 14, fontWeight: FontWeight.w800))),
-                _Tag(label: 'Todas (${mockSubscriptions.length})', color: _violet, background: _lavender),
+                const Expanded(
+                  child: Text(
+                    'Assinaturas Recentes & Gerenciamento Rápido',
+                    style: TextStyle(
+                      color: _ink,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+                _Tag(
+                  label: 'Todas (${mockSubscriptions.length})',
+                  color: _violet,
+                  background: _lavender,
+                ),
               ],
             ),
           ),
@@ -308,8 +453,17 @@ class DashboardScreen extends StatelessWidget {
             width: 30,
             height: 30,
             alignment: Alignment.center,
-            decoration: BoxDecoration(color: item.accentColor.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(8)),
-            child: Text(item.name.characters.first, style: TextStyle(color: item.accentColor, fontWeight: FontWeight.w800)),
+            decoration: BoxDecoration(
+              color: item.accentColor.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              item.name.characters.first,
+              style: TextStyle(
+                color: item.accentColor,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
           ),
           const SizedBox(width: 9),
           Expanded(
@@ -317,17 +471,48 @@ class DashboardScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(item.name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w700)),
-                Text(item.category, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: _muted, fontSize: 9)),
+                Text(
+                  item.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: _ink,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  item.category,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(color: _muted, fontSize: 9),
+                ),
               ],
             ),
           ),
-          Expanded(child: Text(item.cycle, style: const TextStyle(color: _muted, fontSize: 10))),
           Expanded(
-            child: Text('R\$ ${item.price.toStringAsFixed(2)}', textAlign: TextAlign.end, style: const TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w800)),
+            child: Text(
+              item.cycle,
+              style: const TextStyle(color: _muted, fontSize: 10),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              'R\$ ${item.price.toStringAsFixed(2)}',
+              textAlign: TextAlign.end,
+              style: const TextStyle(
+                color: _ink,
+                fontSize: 11,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
           ),
           const SizedBox(width: 10),
-          _Tag(label: item.status == 'Ativa' ? 'Ativo' : item.status, color: const Color(0xFF087E62), background: const Color(0xFFE4F8EE)),
+          _Tag(
+            label: item.status == 'Ativa' ? 'Ativo' : item.status,
+            color: const Color(0xFF087E62),
+            background: const Color(0xFFE4F8EE),
+          ),
         ],
       ),
     );
@@ -387,7 +572,11 @@ class _MetricCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: highlighted ? null : Border.all(color: const Color(0xFFEDECF4)),
         boxShadow: [
-          BoxShadow(color: Colors.black.withValues(alpha: 0.025), blurRadius: 8, offset: const Offset(0, 4)),
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.025),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
         ],
       ),
       child: Column(
@@ -395,17 +584,53 @@ class _MetricCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(child: Text(title, maxLines: 2, style: TextStyle(color: highlighted ? Colors.white70 : _muted, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.3))),
+              Expanded(
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  style: TextStyle(
+                    color: highlighted ? Colors.white70 : _muted,
+                    fontSize: 9,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.3,
+                  ),
+                ),
+              ),
               Icon(icon, color: highlighted ? Colors.white : _violet, size: 16),
             ],
           ),
           const SizedBox(height: 12),
-          Text(value, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(color: fg, fontSize: highlighted ? 25 : 18, fontWeight: FontWeight.w800, height: 1.1)),
+          Text(
+            value,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: fg,
+              fontSize: highlighted ? 25 : 18,
+              fontWeight: FontWeight.w800,
+              height: 1.1,
+            ),
+          ),
           const Spacer(),
           Row(
             children: [
-              Expanded(child: Text(detail, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(color: highlighted ? Colors.white70 : _muted, fontSize: 9))),
-              if (badge != null) _Tag(label: badge!, color: const Color(0xFF087E62), background: badgeColor),
+              Expanded(
+                child: Text(
+                  detail,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: highlighted ? Colors.white70 : _muted,
+                    fontSize: 9,
+                  ),
+                ),
+              ),
+              if (badge != null)
+                _Tag(
+                  label: badge!,
+                  color: const Color(0xFF087E62),
+                  background: badgeColor,
+                ),
             ],
           ),
         ],
@@ -446,14 +671,26 @@ class _Eyebrow extends StatelessWidget {
       children: [
         const Icon(Icons.circle, size: 7, color: Color(0xFF00845A)),
         const SizedBox(width: 6),
-        Text(text, style: const TextStyle(color: _muted, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.5)),
+        Text(
+          text,
+          style: const TextStyle(
+            color: _muted,
+            fontSize: 9,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.5,
+          ),
+        ),
       ],
     );
   }
 }
 
 class _Tag extends StatelessWidget {
-  const _Tag({required this.label, required this.color, required this.background});
+  const _Tag({
+    required this.label,
+    required this.color,
+    required this.background,
+  });
 
   final String label;
   final Color color;
@@ -463,8 +700,20 @@ class _Tag extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 4),
-      decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(20)),
-      child: Text(label, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: color, fontSize: 8, fontWeight: FontWeight.w800)),
+      decoration: BoxDecoration(
+        color: background,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        label,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+          color: color,
+          fontSize: 8,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
     );
   }
 }

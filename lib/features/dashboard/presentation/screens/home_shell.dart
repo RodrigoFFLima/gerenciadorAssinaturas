@@ -75,7 +75,8 @@ class _HomeShellState extends State<HomeShell> {
               ),
               NavigationBar(
                 selectedIndex: _selectedIndex,
-                onDestinationSelected: (index) => setState(() => _selectedIndex = index),
+                onDestinationSelected: (index) =>
+                    setState(() => _selectedIndex = index),
                 destinations: _items
                     .map(
                       (item) => NavigationDestination(
@@ -109,8 +110,22 @@ class _HomeShellState extends State<HomeShell> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('SubTrack', style: TextStyle(color: _ink, fontSize: 17, fontWeight: FontWeight.w800)),
-                      Text('Finanças Recorrentes', style: TextStyle(color: _muted, fontSize: 10, fontWeight: FontWeight.w600)),
+                      Text(
+                        'SubTrack',
+                        style: TextStyle(
+                          color: _ink,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Text(
+                        'Finanças Recorrentes',
+                        style: TextStyle(
+                          color: _muted,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -129,10 +144,17 @@ class _HomeShellState extends State<HomeShell> {
                   onTap: () => setState(() => _selectedIndex = index),
                   borderRadius: BorderRadius.circular(10),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 11),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 11,
+                      vertical: 11,
+                    ),
                     child: Row(
                       children: [
-                        Icon(item.icon, size: 17, color: selected ? Colors.white : _muted),
+                        Icon(
+                          item.icon,
+                          size: 17,
+                          color: selected ? Colors.white : _muted,
+                        ),
                         const SizedBox(width: 9),
                         Expanded(
                           child: Text(
@@ -140,7 +162,9 @@ class _HomeShellState extends State<HomeShell> {
                             style: TextStyle(
                               color: selected ? Colors.white : _ink,
                               fontSize: 12,
-                              fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                              fontWeight: selected
+                                  ? FontWeight.w700
+                                  : FontWeight.w500,
                             ),
                           ),
                         ),
@@ -154,27 +178,65 @@ class _HomeShellState extends State<HomeShell> {
           const Spacer(),
           Container(
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Expanded(child: Text('ORÇAMENTO LIMITE', style: TextStyle(color: _muted, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.4))),
-                    Text('76%', style: TextStyle(color: _violet, fontSize: 10, fontWeight: FontWeight.w800)),
+                    Expanded(
+                      child: Text(
+                        'ORÇAMENTO LIMITE',
+                        style: TextStyle(
+                          color: _muted,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '76%',
+                      style: TextStyle(
+                        color: _violet,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 8),
-                Text('Gasto Mensal:', style: TextStyle(color: _muted, fontSize: 10)),
+                Text(
+                  'Gasto Mensal:',
+                  style: TextStyle(color: _muted, fontSize: 10),
+                ),
                 SizedBox(height: 2),
-                Text('R\$ 384,90', style: TextStyle(color: _ink, fontSize: 16, fontWeight: FontWeight.w800)),
+                Text(
+                  'R\$ 384,90',
+                  style: TextStyle(
+                    color: _ink,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
                 SizedBox(height: 7),
                 ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  child: LinearProgressIndicator(value: 0.76, minHeight: 5, color: _violet, backgroundColor: _lavender),
+                  child: LinearProgressIndicator(
+                    value: 0.76,
+                    minHeight: 5,
+                    color: _violet,
+                    backgroundColor: _lavender,
+                  ),
                 ),
                 SizedBox(height: 7),
-                Text('Meta: R\$ 500,00    Resta R\$ 115,10', style: TextStyle(color: _muted, fontSize: 9)),
+                Text(
+                  'Meta: R\$ 500,00    Resta R\$ 115,10',
+                  style: TextStyle(color: _muted, fontSize: 9),
+                ),
               ],
             ),
           ),
@@ -197,7 +259,10 @@ class _HomeShellState extends State<HomeShell> {
             child: Container(
               height: 40,
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              decoration: BoxDecoration(color: _lavender, borderRadius: BorderRadius.circular(9)),
+              decoration: BoxDecoration(
+                color: _lavender,
+                borderRadius: BorderRadius.circular(9),
+              ),
               child: const Row(
                 children: [
                   Icon(Icons.search_rounded, color: _muted, size: 19),
@@ -232,28 +297,54 @@ class _HomeShellState extends State<HomeShell> {
               foregroundColor: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: compact ? 11 : 14),
               minimumSize: Size(0, compact ? 38 : 40),
-              textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
+              textStyle: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(9),
+              ),
             ),
           ),
           if (!compact) ...[
             IconButton(
               onPressed: () {},
               tooltip: 'Notificações',
-              icon: const Icon(Icons.notifications_none_rounded, color: _ink, size: 20),
+              icon: const Icon(
+                Icons.notifications_none_rounded,
+                color: _ink,
+                size: 20,
+              ),
             ),
             const CircleAvatar(
               radius: 16,
               backgroundColor: Color(0xFFE1E5F7),
-              child: Text('LS', style: TextStyle(color: _violet, fontSize: 10, fontWeight: FontWeight.w800)),
+              child: Text(
+                'LS',
+                style: TextStyle(
+                  color: _violet,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
             ),
             const SizedBox(width: 8),
             const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Lucas Silva', style: TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w700)),
-                Text('Plano Pro', style: TextStyle(color: _muted, fontSize: 10)),
+                Text(
+                  'Lucas Silva',
+                  style: TextStyle(
+                    color: _ink,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  'Plano Pro',
+                  style: TextStyle(color: _muted, fontSize: 10),
+                ),
               ],
             ),
           ],
@@ -265,12 +356,22 @@ class _HomeShellState extends State<HomeShell> {
   Widget _topAction(IconData icon, String label) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
-      decoration: BoxDecoration(color: _lavender, borderRadius: BorderRadius.circular(9)),
+      decoration: BoxDecoration(
+        color: _lavender,
+        borderRadius: BorderRadius.circular(9),
+      ),
       child: Row(
         children: [
           Icon(icon, color: _muted, size: 15),
           const SizedBox(width: 7),
-          Text(label, style: const TextStyle(color: _ink, fontSize: 11, fontWeight: FontWeight.w600)),
+          Text(
+            label,
+            style: const TextStyle(
+              color: _ink,
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ],
       ),
     );
@@ -292,8 +393,15 @@ class _BrandMark extends StatelessWidget {
     return Container(
       width: 27,
       height: 27,
-      decoration: BoxDecoration(color: _violet, borderRadius: BorderRadius.circular(7)),
-      child: const Icon(Icons.account_balance_wallet_outlined, color: Colors.white, size: 15),
+      decoration: BoxDecoration(
+        color: _violet,
+        borderRadius: BorderRadius.circular(7),
+      ),
+      child: const Icon(
+        Icons.account_balance_wallet_outlined,
+        color: Colors.white,
+        size: 15,
+      ),
     );
   }
 }
@@ -323,18 +431,44 @@ class _SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(22),
         children: const [
-          Text('CONFIGURAÇÕES DA CONTA', style: TextStyle(color: _muted, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.5)),
+          Text(
+            'CONFIGURAÇÕES DA CONTA',
+            style: TextStyle(
+              color: _muted,
+              fontSize: 9,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.5,
+            ),
+          ),
           SizedBox(height: 6),
-          Text('Preferências', style: TextStyle(color: _ink, fontSize: 24, fontWeight: FontWeight.w800)),
+          Text(
+            'Preferências',
+            style: TextStyle(
+              color: _ink,
+              fontSize: 24,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
           SizedBox(height: 4),
-          Text('Personalize sua experiência e os avisos financeiros.', style: TextStyle(color: _muted, fontSize: 11)),
+          Text(
+            'Personalize sua experiência e os avisos financeiros.',
+            style: TextStyle(color: _muted, fontSize: 11),
+          ),
           SizedBox(height: 18),
           _SettingsGroup(
             title: 'Perfil e análise',
             icon: Icons.person_outline_rounded,
             children: [
-              _SettingsRow(title: 'Finalidade principal', value: 'Pessoal / Família', icon: Icons.people_outline_rounded),
-              _SettingsRow(title: 'Moeda padrão', value: 'Real brasileiro (BRL)', icon: Icons.attach_money_rounded),
+              _SettingsRow(
+                title: 'Finalidade principal',
+                value: 'Pessoal / Família',
+                icon: Icons.people_outline_rounded,
+              ),
+              _SettingsRow(
+                title: 'Moeda padrão',
+                value: 'Real brasileiro (BRL)',
+                icon: Icons.attach_money_rounded,
+              ),
             ],
           ),
           SizedBox(height: 12),
@@ -342,8 +476,16 @@ class _SettingsScreen extends StatelessWidget {
             title: 'Notificações',
             icon: Icons.notifications_none_rounded,
             children: [
-              _SettingsRow(title: 'Alertas de vencimento', value: '2 dias antes', icon: Icons.event_available_outlined),
-              _SettingsRow(title: 'Resumo mensal', value: 'Ativado', icon: Icons.summarize_outlined),
+              _SettingsRow(
+                title: 'Alertas de vencimento',
+                value: '2 dias antes',
+                icon: Icons.event_available_outlined,
+              ),
+              _SettingsRow(
+                title: 'Resumo mensal',
+                value: 'Ativado',
+                icon: Icons.summarize_outlined,
+              ),
             ],
           ),
           SizedBox(height: 12),
@@ -351,8 +493,16 @@ class _SettingsScreen extends StatelessWidget {
             title: 'Segurança e plano',
             icon: Icons.shield_outlined,
             children: [
-              _SettingsRow(title: 'Criptografia', value: 'AES-256', icon: Icons.lock_outline_rounded),
-              _SettingsRow(title: 'Assinatura SubTrack', value: 'Plano Pro', icon: Icons.workspace_premium_outlined),
+              _SettingsRow(
+                title: 'Criptografia',
+                value: 'AES-256',
+                icon: Icons.lock_outline_rounded,
+              ),
+              _SettingsRow(
+                title: 'Assinatura SubTrack',
+                value: 'Plano Pro',
+                icon: Icons.workspace_premium_outlined,
+              ),
             ],
           ),
         ],
@@ -362,7 +512,11 @@ class _SettingsScreen extends StatelessWidget {
 }
 
 class _SettingsGroup extends StatelessWidget {
-  const _SettingsGroup({required this.title, required this.icon, required this.children});
+  const _SettingsGroup({
+    required this.title,
+    required this.icon,
+    required this.children,
+  });
 
   final String title;
   final IconData icon;
@@ -372,11 +526,28 @@ class _SettingsGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), border: Border.all(color: const Color(0xFFEDECF4))),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFEDECF4)),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [Icon(icon, color: _violet, size: 17), const SizedBox(width: 8), Text(title, style: const TextStyle(color: _ink, fontSize: 12, fontWeight: FontWeight.w800))]),
+          Row(
+            children: [
+              Icon(icon, color: _violet, size: 17),
+              const SizedBox(width: 8),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: _ink,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: 8),
           ...children,
         ],
@@ -386,7 +557,11 @@ class _SettingsGroup extends StatelessWidget {
 }
 
 class _SettingsRow extends StatelessWidget {
-  const _SettingsRow({required this.title, required this.value, required this.icon});
+  const _SettingsRow({
+    required this.title,
+    required this.value,
+    required this.icon,
+  });
 
   final String title;
   final String value;
@@ -400,8 +575,22 @@ class _SettingsRow extends StatelessWidget {
         dense: true,
         contentPadding: EdgeInsets.zero,
         leading: Icon(icon, color: _muted, size: 17),
-        title: Text(title, style: const TextStyle(color: _ink, fontSize: 10, fontWeight: FontWeight.w600)),
-        trailing: Row(mainAxisSize: MainAxisSize.min, children: [Text(value, style: const TextStyle(color: _muted, fontSize: 10)), const SizedBox(width: 8), const Icon(Icons.chevron_right_rounded, color: _muted, size: 16)]),
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: _ink,
+            fontSize: 10,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(value, style: const TextStyle(color: _muted, fontSize: 10)),
+            const SizedBox(width: 8),
+            const Icon(Icons.chevron_right_rounded, color: _muted, size: 16),
+          ],
+        ),
         onTap: () {},
       ),
     );
