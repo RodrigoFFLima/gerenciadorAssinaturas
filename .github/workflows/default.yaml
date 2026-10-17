@@ -1,48 +1,53 @@
-# Note: In a yml each level is padded by 2 spaces
+
 name: Default Workflow
 
 on:
- # Runs this action when you push on main
- push:
-   branches: [ "main" ]
- # Runs this when a PR against main is created
- pull_request:
-   branches: [ "main" ]
-  
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   validacao_pipeline:
     runs-on: ubuntu-latest
-    # timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
-        flutter-version: '3.47.2'
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.47.7'
+          cache: true
 
-    - name: Flutter Doctor
-      run: flutter doctor -v
+      - name: Flutter Doctor
+        run: flutter doctor -v
 
-    - name: Flutter Analyze
-      run: flutter analyze
+      - name: Install Dependencies
+        run: flutter pub get
 
-    - name: Flutter Format Check
-      run: dart format --output=none --set-exit-if-changed .
+      - name: Flutter Analyze
+        run: flutter analyze
 
-    - name: Flutter Test
-      run: flutter test
-    
-    - name: Flutter Build Web
-      run: flutter build web --release 
+      - name: Flutter Format Check
+        run: dart format --output=none --set-exit-if-changed .
 
-    # Step 5: Deploy to Firebase Hosting
-    - name: Deploy to Firebase Hosting
-      uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: '${{ secrets.GITHUB_TOKEN }}'
-        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-        channelId: live # 'live' deploys directly to your production URL
-        projectId: gerenciadorassinaturas-cbfd7 # Replace with your Firebase Project ID
+      - name: Flutter Test
+        run: flutter test
+
+      - name: Flutter Build Web
+        run: flutter build web --release
+
+      - name: Deploy to Firebase Hosting
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: gerenciadorassinaturas-cbfd7
