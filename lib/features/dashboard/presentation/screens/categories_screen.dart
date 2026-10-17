@@ -29,11 +29,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final columns = constraints.maxWidth >= 1100
-                ? 3
-                : constraints.maxWidth >= 680
-                ? 2
-                : 1;
+            final int columns;
+            if (constraints.maxWidth >= 1100) {
+              columns = 3;
+            } else if (constraints.maxWidth >= 680) {
+              columns = 2;
+            } else {
+              columns = 1;
+            }
             const spacing = 14.0;
             final cardWidth =
                 (constraints.maxWidth - 40 - spacing * (columns - 1)) / columns;
